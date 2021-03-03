@@ -63,9 +63,16 @@ public class Main implements Runnable {
                     .stream()
                     .collect(Collectors.toCollection(CopyOnWriteArrayList::new));
 
-            System.out.println("\n*********************************\nStarting program. Press ENTER to exit."
-                    + "\n*********************************\nRetrieving unsent packets from database and intercepting packets from server"
-                    + "\n*********************************");
+            System.out.println("\n*********************************\nStarting program. Press ENTER to exit.");
+
+            if (packetList.size() > 0) {
+                System.out.print("*********************************\nRetrieving unsent packets from database and intercepting");
+            } else {
+                System.out.print("*********************************\nIntercepting");
+            }
+
+            System.out.println(" packets from server\n"+ "*********************************");
+
             packetList.forEach(packet -> {
                 Thread beginningThread = new Thread() {
                     @Override
